@@ -15,12 +15,17 @@ const formatResult = (value) => {
     return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+/**
+ * Hook personalizado que gestiona la lógica de operaciones de la calculadora.
+ * 
+ * @returns {object} - Funciones y estados relacionados con la operación de la calculadora.
+ */
 export const useOperation = () => {
     const [result, setResult] = useState('0'); // Estado para el resultado de la operación.
     const [operacion, setOperacion] = useState(''); // Estado para la cadena de operación actual.
 
     /**
-     * Reinicia la calculadora
+     * Reinicia la calculadora estableciendo los estados a sus valores iniciales.
      */
     const reset = () => {
         setResult('0');
@@ -68,6 +73,7 @@ export const useOperation = () => {
                 let currentResult = c_evaluate(operacion.replace('x', '*'));
                 let percentageResult = c_evaluate(currentResult + '/100');
                 setResult(formatResult(percentageResult.toString()));
+                // Comentado para que la operación se vea en la pantalla antes de evaluarla
                 // setOperacion(formatResult(percentageResult.toString()));
             } catch (error) {
                 setResult('Error');
@@ -103,6 +109,7 @@ export const useOperation = () => {
             let expression = operacion.replace(/x/g, '*').replace(/%/g, '/100');
             let result = c_evaluate(expression);
             setResult(formatResult(result.toString()));
+            // Comentado para mantener la operación en la pantalla después de evaluarla
             // setOperacion(result.toString());
         } catch (error) {
             setResult('Error');
@@ -120,3 +127,6 @@ export const useOperation = () => {
         evaluateOperacion,
     };
 }
+
+
+

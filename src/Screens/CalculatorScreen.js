@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View,Switch } from 'react-native';
 import { useState } from 'react';
 
 
@@ -9,6 +9,7 @@ import { CButtonResult } from '../Components/CButtonResult';
 import { colors, styles} from '../config/theme/app-theme';
 import { useOperation } from '../hooks/useOperation';
 
+import { ThemeContext } from '../context/ThemeContext';
 
 
 
@@ -24,9 +25,12 @@ export default function CalculatorScreen() {
     evaluateOperacion,
   } = useOperation();
 
+  const [theme,setTheme] = useState('light');
+
 
   return (
       <View style={styles.background}>
+          
           <View style={styles.containerResult}>
               <Text adjustsFontSizeToFit numberOfLines={1} style={styles.subResult}>{operacion}</Text>
               <Text adjustsFontSizeToFit numberOfLines={1} style={styles.mainResult}>{result}</Text>

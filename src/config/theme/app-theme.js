@@ -39,8 +39,8 @@ export const styles = StyleSheet.create({
 
     // Estilo para el texto del resultado principal
     mainResult: {
-        color: colors.blackText, // Color de texto negro
-        fontSize: 60,
+        color: colors.backgroundDark, // Color de texto negro
+        fontSize: 70,
         textAlign: "right",
     },
 
